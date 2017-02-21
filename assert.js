@@ -1,3 +1,19 @@
+(function( root, factory ) {
+	if( typeof define === 'function' && define.amd ) {
+		// AMD. Register as an anonymous module.
+		define( function() {
+			root.assert = factory();
+			return root.assert;
+		} );
+	} else if( typeof exports === 'object' ) {
+		// Node. Does not work with strict CommonJS.
+		module.exports = factory();
+	} else {
+		// Browser globals.
+		root.assert = factory();
+	}
+}( this, function() {
+
 'use strict';
 
 // compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
@@ -490,3 +506,6 @@ var objectKeys = Object.keys || function (obj) {
   }
   return keys;
 };
+
+}));
+
